@@ -4,7 +4,7 @@ python:
 before_install:
   - |
     if [ "$TRAVIS_BRANCH" = "main" -a "$TRAVIS_PULL_REQUEST" = "false" ]; then 
-      git clone -b master https://${VICKY_TOKEN}@github.com/fdavidcl/imaginedCreAItures.git output_site
+      git clone -b main https://${VICKY_TOKEN}@github.com/fdavidcl/imaginedCreAItures.git output_site
     fi
 install:
   - pip install pandas
@@ -20,6 +20,6 @@ after_success:
       git add * && \
       git add . --all && \
       git commit -m "`date`" && \
-      git push origin master --quiet
+      git push origin main --quiet
     fi
 
