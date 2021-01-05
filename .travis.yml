@@ -20,6 +20,6 @@ after_success:
       git add * && \
       git add . --all && \
       git commit -m "`date`" && \
-      git push origin main --quiet
+      git push origin gh-pages --quiet
     fi
 
