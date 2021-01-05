@@ -1,4 +1,5 @@
 import plotly.graph_objects as go
+import plotly
 import urllib, json
 
 #url = 'https://raw.githubusercontent.com/plotly/plotly.js/master/test/image/mocks/sankey_energy.json'
@@ -36,4 +37,5 @@ fig = go.Figure(data=[go.Sankey(
 fig.update_layout(title_text="Imagined CreAItures",
                   font_size=14)
 
-fig.show()
+
+plotly.offline.plot(fig, auto_open=False, auto_play=False, filename="index.html")
