@@ -1,0 +1,25 @@
+language: python
+python:
+  - "3.9"
+before_install:
+  - |
+    if [ "$TRAVIS_BRANCH" = "main" -a "$TRAVIS_PULL_REQUEST" = "false" ]; then 
+      git clone -b master https://${VICKY_TOKEN}@github.com/fdavidcl/imaginedCreAItures.git output_site
+    fi
+install:
+  - pip install pandas
+  - pip install plotly
+script:
+  - python run_sankey_plot.py
+  - cp index.html output_site/
+
+after_success:
+  - |
+    if [ "$TRAVIS_BRANCH" = "main" -a "$TRAVIS_PULL_REQUEST" = "false" ]; then
+      cd output_site
+      git add * && \
+      git add . --all && \
+      git commit -m "`date`" && \
+      git push origin master --quiet
+    fi
+
